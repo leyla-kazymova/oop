@@ -12,3 +12,21 @@ static string trim(const string& s) {
     while (e > b && isspace(static_cast<unsigned char>(s[e - 1]))) --e;
     return s.substr(b, e - b);
 }
+//чтение числа с валидацией
+static int readInt(const string& prompt, int lo, int hi) { //защищаемся от мусора в вводе
+    for (;;) {
+        cout << prompt;  //выскакивает подсказка перед чтением
+        string line;
+        if (!getline(cin, line)) { //удалось ли нам прочитать строку
+            cin.clear();
+            continue;
+        }
+        try {
+            \\пробуем найти искл ошибку
+                int v = stoi(line);  \\разбираем строку лайн как целое число
+                if (v >= lo && v <= hi) return v;
+        }
+        catch (...) { /* игнор */ }
+        cout << "Введите число в диапазоне [" << lo << ".." << hi << "].\n";
+    }
+}
