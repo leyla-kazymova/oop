@@ -6,7 +6,7 @@
 
 using namespace std;
 
-static string trim(const string& s) { 
+static string trim(const string& s) {  //не записываем пустые/пробельные задачи
     size_t b = 0, e = s.size();
     while (b < e && isspace(static_cast<unsigned char>(s[b]))) ++b;
     while (e > b && isspace(static_cast<unsigned char>(s[e - 1]))) --e;
@@ -21,26 +21,26 @@ static int readInt(const string& prompt, int lo, int hi) { //защищаемс�
             cin.clear();
             continue;
         }
-        try {
-            \\пробуем найти искл ошибку
-                int v = stoi(line);  \\разбираем строку лайн как целое число
+        try {          //пробуем найти искл ошибку
+                int v = stoi(line);  //разбираем строку лайн как целое число
                 if (v >= lo && v <= hi) return v;
         }
         catch (...) { /* игнор */ }
         cout << "Введите число в диапазоне [" << lo << ".." << hi << "].\n";
     }
 }
-static void printTasks(const vector<string>& tasks) {   
+static void printTasks(const vector<string>& tasks) {   //список по константной ссылке
     if (tasks.empty()) {
         cout << "Список пуст.\n";
         return;
     }
-    for (size_t i = 0; i < tasks.size(); ++i) {  
+    for (size_t i = 0; i < tasks.size(); ++i) {  //счётный цикл
         cout << (i + 1) << ". " << tasks[i] << "\n";
     }
 }
-int main() {    
-    vector<string> tasks;  
+
+int main() {     //основа 
+    vector<string> tasks;     //динамический массив строк
     for (;;) {
         cout << "\n=== TODO ЛИСТ ===\n"
              << "1. Добавить задачу\n"
