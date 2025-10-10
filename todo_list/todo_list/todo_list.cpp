@@ -30,3 +30,12 @@ static int readInt(const string& prompt, int lo, int hi) { //защищаемс�
         cout << "Введите число в диапазоне [" << lo << ".." << hi << "].\n";
     }
 }
+static void printTasks(const vector<string>& tasks) {   
+    if (tasks.empty()) {
+        cout << "Список пуст.\n";
+        return;
+    }
+    for (size_t i = 0; i < tasks.size(); ++i) {  
+        cout << (i + 1) << ". " << tasks[i] << "\n";
+    }
+}
