@@ -39,3 +39,32 @@ static void printTasks(const vector<string>& tasks) {
         cout << (i + 1) << ". " << tasks[i] << "\n";
     }
 }
+int main() {    
+    vector<string> tasks;  
+    for (;;) {
+        cout << "\n=== TODO ЛИСТ ===\n"
+             << "1. Добавить задачу\n"
+             << "2. Удалить задачу\n"
+             << "3. Показать все задачи\n"
+             << "0. Выйти\n";
+        int choice = readInt("Выберите действие: ", 0, 3);
+
+        if (choice == 1) {
+            cout << "Введите задачу: ";
+            string line;
+            if (!getline(cin, line)) {
+                cin.clear();
+                continue;
+            }
+            string t = trim(line);
+            if (t.empty()) {
+                cout << "Пустая задача не добавлена.\n";
+            } else {
+                tasks.push_back(t);
+                cout << "Задача добавлена.\n";
+            }
+        } else if (choice == 2) {
+            if (tasks.empty()) {
+                cout << "Нечего удалять — список пуст.\n";
+                continue;
+            }
