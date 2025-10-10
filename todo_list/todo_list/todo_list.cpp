@@ -68,3 +68,20 @@ int main() {
                 cout << "Нечего удалять — список пуст.\n";
                 continue;
             }
+            cout << "\nВаши задачи:\n";
+            printTasks(tasks);
+            int idx = readInt("Номер для удаления: ", 1, static_cast<int>(tasks.size()));
+            tasks.erase(tasks.begin() + (idx - 1));
+            cout << "Задача удалена.\n";
+        }
+        else if (choice == 3) {
+            cout << "\nВаши задачи:\n";
+            printTasks(tasks);
+        }
+        else if (choice == 0) {
+            cout << "До свидания!\n";
+            break;
+        }
+    }
+    return 0;
+}
